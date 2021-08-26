@@ -1,0 +1,10 @@
+INSERT INTO `login-demo`.`users` (
+`id` ,
+`name` ,
+`password` ,
+`email`
+)
+VALUES (
+NULL , 'demo', '1234', 'demo@example.com'
+)
+
