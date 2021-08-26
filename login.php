@@ -19,11 +19,12 @@
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="email" name="email" class="form-control" required />
+                    <input type="password" name="password" class="form-control" required />
                 </div>
                 <div class="form-group">
                     <input type="submit" name="submit" class="btn bnt-primary" value="Submit">
                 </div>
+                <p>Don't have an account? <a hred="register.php">Register here</a>.</p>
             </form>
         </div>
     </div>

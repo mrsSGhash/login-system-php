@@ -12,8 +12,9 @@
         <div class="col-md-12">
             <h2>Login/Register Learning Website</h2>
             <p>Please select what you would like to do.</p>
-            <button type="button">LOGIN</button>
-            <button type="button">REGISTER</button>
+            <a href="login.php">LOGIN</a> 
+            <br>
+            <a href="register.php">REGISTER</a>
         </div>
     </div>
 </body>
