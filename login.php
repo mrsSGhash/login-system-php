@@ -1,7 +1,7 @@
 <!-- validate login credentials -->
 <?php
     require_once "config.php";
-    require_once "sessions.php";
+    require_once "session.php";
 
     $error = '';
     if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])){
