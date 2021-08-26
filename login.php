@@ -1,3 +1,53 @@
+<!-- validate login credentials -->
+<?php
+    require_once "config.php";
+    require_once "sessions.php";
+
+    $error = '';
+    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])){
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']);
+
+        //validate if email is empty
+        if (empty($email)) {
+            $error .= '<p class="error">Please enter email.</p>';
+        }
+
+        //validate if password is empty
+        if (empty($password)) {
+            $error .= '<p class="error">Please enter password.</p>';
+        }
+
+        //if there is no errors
+        if (empty($error)) {
+            $sql = "SELECT * FROM users WHERE email = ?";
+            if($query = $db->prepare($sql)) {
+                $query->bind_param('s', $email);
+                $query->execute();
+                $row = $query->fetch();
+
+                if ($row) {
+                    if (password_verify($password, $row['password'])) {
+                        $_SESSION["userid"] = $row['id'];
+                        $_SESSION["user"] = $row;
+
+                        //redirect the user to welcome page
+                        header ("location: welcome.php");
+                        exit;
+                    } else {
+                        $error .= '<p class="error">The password is not valid.</p>';
+                    }
+                } else {
+                    $error .= '<p class="error">No user exists with that email address.</p>';
+                }
+            }
+            $query->close();
+        }
+        //close connection
+        mysqli_close($db);
+    }
+?>
+
 <!-- Login Form in HTML -->
 
 <!DOCTYPE html>
